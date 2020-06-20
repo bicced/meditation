@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
 import med from "../media/med.jpg";
 import 'antd/dist/antd.css';
 import { StarFilled, PlayCircleFilled } from '@ant-design/icons';
 import AudioPlayer from '../components/AudioPlayer';
-
+import firebase from '../firebase.js';
 const medaudio = require("../media/medaudio.mp3");
 const title2 = require("../media/title2.mp3");
 
@@ -17,6 +17,12 @@ function Homepage() {
       {title:"Title4", url: medaudio}
     ]);
   const [audio, setAudio] = useState();
+
+  useEffect(() => {
+    firebase.firestore().collection('Audio').add({
+      url: "nerd"
+    })
+  })
 
 
   return (
